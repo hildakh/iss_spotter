@@ -1,15 +1,16 @@
 const { fetchMyIP } = require('./iss');
 const { fetchCoordsByIP } = require('./iss');
 const {fetchISSFlyOverTimes } = require('./iss');
+// const { nextISSTimesForMyLocation } = require('./iss');  
 
-fetchMyIP((error, ip) => {
+// fetchMyIP((error, ip) => {
 
-  if (error) {
-    console.log(`Sorry! It didn't work!`, error);
-    return;
-  }
-  console.log(`It worked! Returned IP`, ip);
-});
+//   if (error) {
+//     console.log(`Sorry! It didn't work!`, error);
+//     return;
+//   }
+//   console.log(`It worked! Returned IP`, ip);
+// });
 
 /* My code which I was strugling with to complete
 
@@ -21,15 +22,17 @@ fetchCoordsByIP((error, ip) => {
 })
 */
 //Compass solution
-fetchCoordsByIP('162.245.144.188', (error, coords) => {
+
+// The code below is temporary and can be commented out.
+const { fetchISSFlyOverTimes } = require('./iss');
+
+const exampleCoords = { latitude: '49.27670', longitude: '-123.13000' };
+
+fetchISSFlyOverTimes(exampleCoords, (error, passTimes) => {
   if (error) {
     console.log("It didn't work!" , error);
     return;
   }
 
-  console.log('It worked! Returned Coords:' , coords);
+  console.log('It worked! Returned flyover times:' , passTimes);
 });
-
-fetchISSFlyOverTimes(coords, () => {
-  console.log('Here is the risetime and duration for your IP', coords);
-})
