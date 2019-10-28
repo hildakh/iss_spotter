@@ -1,5 +1,6 @@
 const { fetchMyIP } = require('./iss');
 const { fetchCoordsByIP } = require('./iss');
+const {fetchISSFlyOverTimes } = require('./iss');
 
 fetchMyIP((error, ip) => {
 
@@ -19,7 +20,6 @@ fetchCoordsByIP((error, ip) => {
   console.log('Here are the coordinates', ip)
 })
 */
-
 //Compass solution
 fetchCoordsByIP('162.245.144.188', (error, coords) => {
   if (error) {
@@ -29,3 +29,7 @@ fetchCoordsByIP('162.245.144.188', (error, coords) => {
 
   console.log('It worked! Returned Coords:' , coords);
 });
+
+fetchISSFlyOverTimes(coords, () => {
+  console.log('Here is the risetime and duration for your IP', coords);
+})
